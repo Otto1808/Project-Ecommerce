@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::get();
         return view('admin.category.index', compact('categories'));
     }
 
@@ -58,7 +58,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -66,7 +67,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+        $image = $category->image;
+        if($request->hasFile('image')){
+            $image = $request->file('image')->store('public/files');
+            \Storage::delete($category->image);
+        }
+        $category->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description,
+            'image' => $image,
+        ]);
+        $category->save();
+        return redirect()->route('category.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -74,6 +88,10 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+        $filaname = $category->image;
+        $category->delete();
+        \Storage::delete($filaname);
+        return redirect()->back()->with('success', 'Category deleted successfully');
     }
 }
