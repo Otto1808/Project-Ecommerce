@@ -27,6 +27,7 @@ Route::get('/index/test', function () {
 
 Route::resource('category', \App\Http\Controllers\CategoryController::class);
 
+Route::resource('subcategory', \App\Http\Controllers\SubcategoryController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

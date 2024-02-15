@@ -16,20 +16,30 @@
         Features
     </div>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+        <a class="nav-link" href="{{route('category.index')}}" data-toggle="collapse"  data-target="#collapseBootstrap"
            aria-expanded="true" aria-controls="collapseBootstrap">
             <i class="far fa-fw fa-window-maximize"></i>
-            <span>Bootstrap UI</span>
+            <span>Category</span>
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Bootstrap UI</h6>
-                <a class="collapse-item" href="alerts.html">Alerts</a>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="dropdowns.html">Dropdowns</a>
-                <a class="collapse-item" href="modals.html">Modals</a>
-                <a class="collapse-item" href="popovers.html">Popovers</a>
-                <a class="collapse-item" href="progress-bar.html">Progress Bars</a>
+                <h6 class="collapse-header">Category</h6>
+                <a class="collapse-item" href="{{route('category.create')}}">Add Category</a>
+                <a class="collapse-item" href="{{route('category.index')}}">View Category</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('subcategory.index')}}" data-toggle="collapse"  data-target="#collapseSubcategory"
+           aria-expanded="true" aria-controls="collapseSubcategory">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Subcategory</span>
+        </a>
+        <div id="collapseSubcategory" class="collapse" aria-labelledby="headingSubcategory" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Category</h6>
+                <a class="collapse-item" href="{{route('subcategory.create')}}">Add Subcategory</a>
+                <a class="collapse-item" href="{{route('subcategory.index')}}">View Subcategory</a>
             </div>
         </div>
     </li>
